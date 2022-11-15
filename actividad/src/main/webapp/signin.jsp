@@ -12,7 +12,7 @@
 </head>
 
 <body background="images/fondo.jpg">
-<form id="forma" name="forma" method="post" onSubmit="return validalogin();" action="ValidaUsuario"><br><br>
+<form id="forma" name="forma" method="post" onSubmit="return validalogin();" action="principal.jsp"><br><br>
     <table width="500" border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#000000">
         <tr>
             <td><table width="100%" border="0" cellspacing="0" cellpadding="0">

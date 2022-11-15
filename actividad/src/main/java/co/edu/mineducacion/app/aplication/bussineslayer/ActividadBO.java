@@ -20,7 +20,7 @@ public class ActividadBO  implements Serializable {
     public boolean CreateActividad(Actividad obj) throws IOException, SQLException {
         try {
             return ActividadDAL.getInstance().CreateActividad(obj);
-        } catch (Exception ex) {
+        } catch (IOException | SQLException ex) {
             throw new SQLException("ERROR:" + ex.getMessage());
         }
     }

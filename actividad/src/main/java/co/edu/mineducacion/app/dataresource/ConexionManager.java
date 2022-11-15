@@ -18,11 +18,11 @@ public class ConexionManager {
     private Vector drivers = new Vector();
     private PrintWriter log;
     private Hashtable pools = new Hashtable();
-    private String motorDBName = "";
-    private String driverDBName = "";
-    private String urlDBName = "";
-    private String usuarioDBName = "";
-    private String passwordDBName = "";
+    private String motorDBName = "POSTGRESQL";
+    private String driverDBName = "org.postgresql.Driver";
+    private String urlDBName = "jdbc:postgresql://127.0.0.1:5432/db-minedu";
+    private String usuarioDBName = "jmmaestrej";
+    private String passwordDBName = "12345678";
     
     private ConexionManager() {
         init();

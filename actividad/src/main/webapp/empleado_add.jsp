@@ -14,14 +14,14 @@
 
 <body background="images/fondo.jpg">
 <form id="forma" name="forma" method="post" onSubmit="return validaempleado();" action=""><br><br>
-    <table width="500" border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#000000">
+    <table width="500" border="1" align="left" cellpadding="0" cellspacing="0" bordercolor="#000000">
         <tr>
             <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <td colspan="2" class="tituloForm"><div align="center">REGISTRO DE EMPLEADOS </div><hr/></td>
                 </tr>
                 <tr class="normalDiez">
-                    <td width="50%" align="right">Nombre:&nbsp;</td>
+                    <td width="50%" align="right">Nombre completo:&nbsp;</td>
                     <td width="50%"><input type="text" name="txtnombre" id="txtnombre" /></td>
                 </tr>
                 <tr class="normalDiez">

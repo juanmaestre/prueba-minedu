@@ -41,36 +41,26 @@ public class ActividadDAL  implements Serializable{
         try{
             conexion.connectMySql();
             conexion.SQLClear();
-            conexion.SQL.append("INSERT INTO actividad(descripcion,fechapro,idempleado)");
-            conexion.SQL.append("VALUES(?,?,?)");
+            conexion.SQL.append("INSERT INTO actividad(descripcion,idempleado)");
+            conexion.SQL.append("VALUES(");
                         
             //Validamos Atributo
             if(((obj.getDescripcion()!=null?obj.getDescripcion():"").length()>0)){
-                conexion.ContPrepareStatement ++;
-                conexion.Parametros.put(String.valueOf(conexion.ContPrepareStatement), "STRING|"+ obj.getDescripcion().toUpperCase() +"");
+                conexion.SQL.append("'" + obj.getDescripcion() + "',");
             }else{
-                conexion.ContPrepareStatement ++;
-                conexion.Parametros.put(String.valueOf(conexion.ContPrepareStatement), "NULO");
-            }
-            //Validamos Atributo
-            if(((obj.getFechapro()!=null?obj.getFechapro():"").length()>0)){
-                conexion.ContPrepareStatement ++;
-                conexion.Parametros.put(String.valueOf(conexion.ContPrepareStatement), "TIMESTAMP|"+ obj.getFechapro() +"");
-            }else{
-                conexion.ContPrepareStatement ++;
-                conexion.Parametros.put(String.valueOf(conexion.ContPrepareStatement), "NULO");
-            }            
+                conexion.SQL.append("NULL");
+            }        
 
              //Validamos Atributo
             if((obj.getIdempleado()>0)){
-                conexion.ContPrepareStatement ++;
-                conexion.Parametros.put(String.valueOf(conexion.ContPrepareStatement), "INT|"+ obj.getIdempleado() +"");
+                conexion.SQL.append(obj.getIdempleado());
             }else{
-                conexion.ContPrepareStatement ++;
-                conexion.Parametros.put(String.valueOf(conexion.ContPrepareStatement), "INT|-1");
+                conexion.SQL.append(-1);
             }            
+            conexion.SQL.append(")");
             //ACA EJECUTAMOS LA SENTENCIA
-            if(conexion.executeSQLUpdate(conexion.Parametros) > 0){
+            System.out.println(conexion.SQL.toString());
+            if(conexion.executeSQLUpdate() > 0){
                 Insertado = true;
             }
             
@@ -192,8 +182,7 @@ public class ActividadDAL  implements Serializable{
             conexion.SQL.append("SELECT a.idactividad, a.descripcion, a.fechaini, a.fechapro, a.finalizado, a.fechafin, "
                     + " a.idempleado, e.nombre "
                     + " FROM actividad a inner join empleado e on a.idempleado = e.idempleado WHERE 1=1 ");
-//hay que validar lo siguiente o simplemente listar?? lo pregunto por que es el listar
-// el orden de los item en la validacion debe corresponder con la posicion de los signos de interrogacion??
+/*
             if((actividad.getIdactividad()>0)){
                 conexion.ContPrepareStatement ++;
                 conexion.SQL.append("AND idactividad=? ");
@@ -223,7 +212,7 @@ public class ActividadDAL  implements Serializable{
                 conexion.SQL.append("AND fechafin=? ");
                 conexion.Parametros.put(String.valueOf(conexion.ContPrepareStatement), "TIMESTAMP|"+ actividad.getFechafin() +"");
             }
-            
+  */          
             
             //ACA EJECUTAMOS LA SENTENCIA
             if(conexion.executeSQLQuery(conexion.Parametros) > 0){
